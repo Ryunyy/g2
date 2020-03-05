@@ -120,5 +120,6 @@ int main()
         }
         cout << endl << endl;
     }
+    system("PAUSE");
     return 0;
 }
