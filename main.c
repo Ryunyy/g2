@@ -1,4 +1,3 @@
-#include <clocale>
 #include <cstdlib>
 #include <iostream>
 #include <math.h>
@@ -39,7 +38,6 @@ int Count(string enter)
 
 int main()
 {
-    setlocale(LC_ALL, "RUS");
     string enter;
     getline(cin, enter);
     int x, y, r, i = 0;
@@ -99,9 +97,9 @@ int main()
         double per, sq;
         per = 2 * mas[u][2] * 3.1415;
         sq = 3.1415 * mas[u][2] * mas[u][2];
-        cout << u + 1 << " êðóã " << mas[u][0] << " " << mas[u][1] << endl;
-        cout << "Ïåðèìåòð = " << per << endl;
-        cout << "Ïëîùàäü = " << sq << endl;
+        cout << u + 1 << " Krug " << mas[u][0] << " " << mas[u][1] << endl;
+        cout << "Perimetr = " << per << endl;
+        cout << "Ploshad' = " << sq << endl;
         for (int g = 0; g < i; g++) {
             int rast, sumR;
             if (g == u)
@@ -113,9 +111,9 @@ int main()
                            + pow(mas[u][1] - mas[g][1], 2));
             sumR = mas[u][2] + mas[g][2];
             if (rast <= sumR) {
-                cout << "Ïåðåñåêàåòñÿ ñ " << g + 1 << " êðóãîì" << endl;
+                cout << "Peresekaetsya s " << g + 1 << " krugom" << endl;
             } else {
-                cout << "Íå ïåðåñåêàåòñÿ ñ " << g + 1 << " êðóãîì" << endl;
+                cout << "Ne peresekaetsya s " << g + 1 << " krugom" << endl;
             }
         }
         cout << endl << endl;
