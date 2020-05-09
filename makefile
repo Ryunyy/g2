@@ -2,7 +2,7 @@ flags = -Wall -Werror
 bus = build/src
 bis = bin
 
-all: bin/main.exe
+all: clean bin/main.exe
 
 bin/main.exe: $(bus)/main.o $(bus)/per.o $(bus)/calc.o $(bus)/square.o
 	g++ $(flags) $(bus)/main.o $(bus)/per.o $(bus)/calc.o $(bus)/square.o -o bin/main.exe -lm
@@ -21,6 +21,6 @@ $(bus)/square.o: src/square.cpp
 
 clean:
 	rm -rf $(bus)/*.o
-	rm -rf bin/*
+	rm -rf bin/*.exe
 
 .PHONY: all clean
