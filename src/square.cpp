@@ -1,4 +1,5 @@
 #include <cmath>
+#include <math.h>
 float square(int i, const float PI, float** a)
 {
     //вычисление площади
