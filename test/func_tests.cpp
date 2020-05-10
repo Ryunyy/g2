@@ -2,7 +2,7 @@
 #include "calc.h"
 #include "per.h"
 #include "square.h"
-#include <catch.hpp>
+#include "../thirdparty/catch.hpp"
 #include <math.h>
 
 TEST_CASE("sq_pass", "test1")
