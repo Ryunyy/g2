@@ -78,7 +78,7 @@ TEST_CASE("sq_pass", "test1")
         q = true;
     for (int w = 0; w < 5; w++)
         free(a[w]);
-    REQUIRE(q == false);
+    REQUIRE(q == true);
 }
 
 TEST_CASE("per_pass1", "test1")
@@ -96,7 +96,7 @@ TEST_CASE("per_pass1", "test1")
         q = true;
     for (int w = 0; w < 5; w++)
         free(a[w]);
-    REQUIRE(q == false);
+    REQUIRE(q == true);
 }
 
 TEST_CASE("per_pass2", "test2")
@@ -114,7 +114,7 @@ TEST_CASE("per_pass2", "test2")
         q = true;
     for (int w = 0; w < 5; w++)
         free(a[w]);
-    REQUIRE(q == false);
+    REQUIRE(q == true);
 }
 
 TEST_CASE("calc_pass1", "test1")
