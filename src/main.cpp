@@ -1,5 +1,7 @@
 #include "calc.h"
+#include "cordy.h"
 #include "per.h"
+#include "rad.h"
 #include "square.h"
 #include <clocale>
 #include <cmath>
@@ -20,12 +22,33 @@ int main()
     for (i = 0; i < n; i++) {
         a[i] = new float[5];
         cout << endl << "Введите характеристики окружности №" << i + 1 << endl;
-        cout << "Координата (x) окружности" << endl;
+    q:
+        cout << "Координата (x) окружности в диапазоне от -50 до 50" << endl;
         cin >> a[i][0];
-        cout << "Координата (y) окружности" << endl;
+        if (cordy(a, i, 0))
+            continue;
+        else {
+            cout << "Введите координату корректно" << endl;
+            goto q;
+        }
+    e:
+        cout << "Координата (y) окружности в диапазоне от -50 до 50" << endl;
         cin >> a[i][1];
-        cout << "Радиус окружности" << endl;
+        if (cordy(a, i, 1))
+            continue;
+        else {
+            cout << "Введите координату корректно" << endl;
+            goto e;
+        }
+    m:
+        cout << "Радиус окружности в диапазоне от 1 до 10" << endl;
         cin >> a[i][2];
+        if (rad(a, i))
+            continue;
+        else {
+            cout << "Введите радиус корректно" << endl;
+            goto m;
+        }
     }
     cout << endl;
     for (i = 0; i < n - 1; i++)

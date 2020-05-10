@@ -1,9 +1,67 @@
 #define CATCH_CONFIG_MAIN
 #include "calc.h"
+#include "catch.hpp"
+#include "cordy.h"
 #include "per.h"
+#include "rad.h"
 #include "square.h"
-#include "../thirdparty/catch.hpp"
 #include <math.h>
+
+TEST_CASE("cord1", "pass")
+{
+    float** a;
+    a = new float*[5];
+    for (int w = 0; w < 5; w++)
+        a[w] = new float[5];
+    int i = 1, r;
+    a[i][0] = 20;
+    r = cordy(a, i, 0);
+    for (int w = 0; w < 5; w++)
+        free(a[w]);
+    REQUIRE(r == 1);
+}
+
+TEST_CASE("cord2", "fail")
+{
+    float** a;
+    a = new float*[5];
+    for (int w = 0; w < 5; w++)
+        a[w] = new float[5];
+    int i = 1, r;
+    a[i][0] = -200;
+    r = cordy(a, i, 0);
+    for (int w = 0; w < 5; w++)
+        free(a[w]);
+    REQUIRE(r == 0);
+}
+
+TEST_CASE("rad1", "fail")
+{
+    float** a;
+    a = new float*[5];
+    for (int w = 0; w < 5; w++)
+        a[w] = new float[5];
+    int i = 1, r;
+    a[i][2] = -200;
+    r = rad(a, i);
+    for (int w = 0; w < 5; w++)
+        free(a[w]);
+    REQUIRE(r == 0);
+}
+
+TEST_CASE("rad2", "pass")
+{
+    float** a;
+    a = new float*[5];
+    for (int w = 0; w < 5; w++)
+        a[w] = new float[5];
+    int i = 1, r;
+    a[i][2] = 10;
+    r = rad(a, i);
+    for (int w = 0; w < 5; w++)
+        free(a[w]);
+    REQUIRE(r == 1);
+}
 
 TEST_CASE("sq_pass", "test1")
 {
@@ -18,6 +76,8 @@ TEST_CASE("sq_pass", "test1")
     n = square(i, PI, a);
     if (n == 3.14)
         q = true;
+    for (int w = 0; w < 5; w++)
+        free(a[w]);
     REQUIRE(q == false);
 }
 
@@ -34,6 +94,8 @@ TEST_CASE("per_pass1", "test1")
     n = per(i, a, PI);
     if (n == 6.28)
         q = true;
+    for (int w = 0; w < 5; w++)
+        free(a[w]);
     REQUIRE(q == false);
 }
 
@@ -50,6 +112,8 @@ TEST_CASE("per_pass2", "test2")
     n = per(i, a, PI);
     if (n == 12.56)
         q = true;
+    for (int w = 0; w < 5; w++)
+        free(a[w]);
     REQUIRE(q == false);
 }
 
@@ -67,6 +131,8 @@ TEST_CASE("calc_pass1", "test1")
     a[i][2] = 3;
     a[j][2] = 5;
     n = calc(i, j, a, c);
+    for (int w = 0; w < 5; w++)
+        free(a[w]);
     REQUIRE(n == 1);
 }
 
@@ -84,5 +150,7 @@ TEST_CASE("calc_pass2", "test2")
     a[i][2] = 3;
     a[j][2] = 5;
     n = calc(i, j, a, c);
+    for (int w = 0; w < 5; w++)
+        free(a[w]);
     REQUIRE(n == 0);
 }
