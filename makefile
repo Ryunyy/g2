@@ -2,9 +2,9 @@ flags = -Wall -Werror -MP -MMD
 bus = build/src
 bis = bin
 but = build/test
-bit = bin/test.exe
+bit = bin/test
 
-all: clean bin/main.exe $(bit) ./$(bit)
+all: clean bin/main.exe $(bit) run
 
 bin/main.exe: $(bus)/main.o $(bus)/per.o $(bus)/calc.o $(bus)/square.o
 	g++ $(flags) $(bus)/main.o $(bus)/per.o $(bus)/calc.o $(bus)/square.o -o bin/main.exe -lm
@@ -22,10 +22,13 @@ $(bus)/square.o: src/square.cpp
 	g++ $(flags) -c src/square.cpp -o $(bus)/square.o -lm
 
 $(bit): $(but)/func_tests.o $(bus)/per.o $(bus)/calc.o $(bus)/square.o
-	g++ $(flags) $(but)/func_tests.o $(bus)/per.o $(bus)/calc.o $(bus)/square.o -o $(bit)
+	g++ $(flags) $(but)/func_tests.o $(bus)/per.o $(bus)/calc.o $(bus)/square.o -o $(bit) -lm
 
 $(but)/func_tests.o: test/func_tests.cpp
-	g++ $(flags) -I thirdparty -I src -c test/func_tests.cpp -o $(but)/func_tests.o
+	g++ $(flags) -I thirdparty -I src -c test/func_tests.cpp -o $(but)/func_tests.o -lm
+
+run: $(bit)
+	./$(bit)
 
 clean:
 	rm -rf $(bus)/*.o
