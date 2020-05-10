@@ -1,4 +1,3 @@
-#include <cmath>
 #include <math.h>
 int calc(int i, int j, float** a, int c)
 {
