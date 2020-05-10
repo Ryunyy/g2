@@ -1,4 +1,4 @@
-flags = -Wall -Werror -MP -MMD
+flags = -Wall -Werror -MP -MMD -std=c++14
 bus = build/src
 bis = bin
 but = build/test
