@@ -4,7 +4,7 @@ bis = bin
 but = build/test
 bit = bin/test
 
-all: clean bin/main.exe $(bit) run clean
+all: clean1 bin/main.exe $(bit) run clean2
 
 bin/main.exe: $(bus)/main.o $(bus)/per.o $(bus)/calc.o $(bus)/square.o $(bus)/cordy.o $(bus)/rad.o
 	g++ $(flags) $(bus)/main.o $(bus)/per.o $(bus)/calc.o $(bus)/square.o $(bus)/cordy.o $(bus)/rad.o -o bin/main.exe -lm
@@ -36,11 +36,18 @@ $(but)/func_tests.o: test/func_tests.cpp
 run: $(bit)
 	./$(bit)
 
-clean:
+clean1:
 	rm -rf $(bus)/*.o
 	rm -rf $(bus)/*.d
 	rm -rf $(but)/*.o
 	rm -rf $(but)/*.d
 	rm -rf $(bis)/*.exe
 
+clean2:
+	rm -rf $(bus)/*.o
+	rm -rf $(bus)/*.d
+	rm -rf $(but)/*.o
+	rm -rf $(but)/*.d
+	rm -rf $(bis)/*.exe
+	
 .PHONY: all clean
