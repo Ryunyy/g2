@@ -74,11 +74,11 @@ TEST_CASE("sq_pass", "test1")
         a[w] = new float[5];
     a[i][2] = 1;
     n = square(i, PI, a);
-    if (n == 3.14)
+    if (n == PI)
         q = true;
     for (int w = 0; w < 5; w++)
         free(a[w]);
-    REQUIRE(q == false);
+    REQUIRE(q == true);
 }
 
 TEST_CASE("per_pass1", "test1")
@@ -92,11 +92,11 @@ TEST_CASE("per_pass1", "test1")
     bool q;
     a[i][2] = 1;
     n = per(i, a, PI);
-    if (n == 6.28)
+    if (n == (2 * PI))
         q = true;
     for (int w = 0; w < 5; w++)
         free(a[w]);
-    REQUIRE(q == false);
+    REQUIRE(q == true);
 }
 
 TEST_CASE("per_pass2", "test2")
@@ -110,11 +110,11 @@ TEST_CASE("per_pass2", "test2")
     bool q;
     a[i][2] = 2;
     n = per(i, a, PI);
-    if (n == 12.56)
+    if (n == (4 * PI))
         q = true;
     for (int w = 0; w < 5; w++)
         free(a[w]);
-    REQUIRE(q == false);
+    REQUIRE(q == true);
 }
 
 TEST_CASE("calc_pass1", "test1")
